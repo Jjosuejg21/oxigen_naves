@@ -30,8 +30,8 @@ public class NaveEspacialController {
     }
 
     @GetMapping("/buscar")
-    public List<NaveEspacialModel> obtenerNavesEspacialesPorNombre(@RequestParam String name) {
-        return naveEspacialService.obtenerNavesEspacialesPorNombre(name);
+    public List<NaveEspacialModel> obtenerNavesEspacialesPorNombre(@RequestParam String nombre) {
+        return naveEspacialService.obtenerNavesEspacialesPorNombre(nombre);
     }
 
     @PostMapping
