@@ -1,16 +1,19 @@
-FROM ubuntu:latest
-LABEL authors="jj"
+FROM openjdk:21-jdk AS jdk
 
-ENTRYPOINT ["top", "-b"]
-#Build
-FROM maven:3.9.6-openjdk-21 AS build
+FROM maven:3.9.4 AS maven
+
+COPY --from=jdk /opt/java/openjdk /opt/java/openjdk
+
+ENV JAVA_HOME=/opt/java/openjdk
+ENV PATH="$JAVA_HOME/bin:$PATH"
+
+FROM maven:3.9.4 AS build
 COPY pom.xml /app/
 COPY src /app/src
 WORKDIR /app
 RUN mvn clean package -DskipTests
 
-#Run
 FROM openjdk:21-jdk-slim
-COPY --from=build /app/target/navesEspaciales-api-0.0.1-SNAPSHOT.jar /usr/local/lib/navesEspaciales-api.jar
+COPY --from=build /app/target/naves-espaciales-0.0.1-SNAPSHOT.jar /usr/local/lib/naves-espaciales.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/usr/local/lib/navesEspaciales-api.jar"]
+ENTRYPOINT ["java", "-jar", "/usr/local/lib/naves-espaciales.jar"]
