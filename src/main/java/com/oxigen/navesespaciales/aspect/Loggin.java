@@ -13,7 +13,8 @@ public class Loggin {
     private static final Logger logger = LoggerFactory.getLogger(Loggin.class);
 
     @Pointcut("execution(* com.oxigen.navesespaciales.controller.NaveEspacialController.getNav(..)) && args(id,..)")
-    public void getNaveEspacialById(Long id) {}
+    public void getNaveEspacialById(Long id) {
+    }
 
     @AfterReturning("getNaveEspacialById(id)")
     public void logIfNegativeId(Long id) {
