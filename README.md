@@ -83,6 +83,7 @@ HTTP:
 ```http
 POST /api/naves
 Content-Type: application/json
+Authorization: Basic bHVrZVNreXdhbGtlcjpyZDJk
 
 {
   "nombre": "Enterprise",
@@ -95,6 +96,7 @@ Bash:
 ```bash
 curl -X POST "http://localhost:8080/api/naves" \
     -H "Content-Type: application/json" \
+    -H "Authorization: Basic bHVrZVNreXdhbGtlcjpyZDJk" \
     -d '{"nombre": "Enterprise", "serie": "Star Trek", "pelicula": "The Wrath of Khan"}'
 ```
 
@@ -113,6 +115,7 @@ HTTP:
 ```http
 PUT /api/naves/1
 Content-Type: application/json
+Authorization: Basic bHVrZVNreXdhbGtlcjpyZDJk
 
 {
   "nombre": "Enterprise",
@@ -125,6 +128,7 @@ Bash:
 ```bash
 curl -X PUT "http://localhost:8080/api/naves/1" \
     -H "Content-Type: application/json" \
+    -H "Authorization: Basic bHVrZVNreXdhbGtlcjpyZDJk" \
     -d '{"nombre": "Enterprise", "serie": "Star Trek", "pelicula": "The Search for Spock"}'
 ```
 
@@ -141,9 +145,11 @@ curl -X PUT "http://localhost:8080/api/naves/1" \
 HTTP:
 ```http
 DELETE /api/naves/1
+Authorization: Basic bHVrZVNreXdhbGtlcjpyZDJk
 ```
 
 Bash:
 ```bash
-curl -X DELETE "http://localhost:8080/api/naves/1"
+curl -X DELETE "http://localhost:8080/api/naves/1" \
+    -H "Authorization: Basic bHVrZVNreXdhbGtlcjpyZDJk"
 ```
